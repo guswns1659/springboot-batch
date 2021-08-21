@@ -7,14 +7,14 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 import lombok.Value;
 
-@NoArgsConstructor(access = AccessLevel.PRIVATE)
+@NoArgsConstructor
 @AllArgsConstructor
 @Getter
 @Setter
 public class Person {
 
-    private String lastName;
     private String firstName;
+    private String lastName;
 
     @Override
     public String toString() {
