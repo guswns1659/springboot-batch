@@ -75,8 +75,7 @@ public class BatchConfiguration {
 
     @Bean
     public Step step1(JdbcBatchItemWriter<Person> writer) {
-        // Q : get("step1")을 변경하면 Job에서 못찾나?
-        return stepBuilderFactory.get("step1")
+        return stepBuilderFactory.get("step2")
             .<Person, Person> chunk(10)
             .reader(reader())
             .processor(processor())
