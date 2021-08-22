@@ -23,9 +23,9 @@ import org.springframework.core.io.ClassPathResource;
 @EnableBatchProcessing
 public class BatchConfiguration {
 
-    private JobBuilderFactory jobBuilderFactory;
+    private final JobBuilderFactory jobBuilderFactory;
 
-    private StepBuilderFactory stepBuilderFactory;
+    private final StepBuilderFactory stepBuilderFactory;
 
     public BatchConfiguration(
         JobBuilderFactory jobBuilderFactory,
@@ -70,7 +70,6 @@ public class BatchConfiguration {
             .flow(step1)
             .end()
             .build();
-
     }
 
     @Bean
