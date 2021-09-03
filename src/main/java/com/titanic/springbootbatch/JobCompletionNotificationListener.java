@@ -23,7 +23,6 @@ public class JobCompletionNotificationListener extends JobExecutionListenerSuppo
     @Override
     public void beforeJob(JobExecution jobExecution) {
         log.info("!!! JOB : {}. STARTED!!", jobExecution.getJobInstance().getJobName());
-
     }
 
     @Override
