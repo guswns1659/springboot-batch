@@ -1,6 +1,4 @@
 logging:
   level:
     root: info
-    org:
-      hibernate:
-        SQL: debug
+    sql: trace

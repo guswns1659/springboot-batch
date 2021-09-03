@@ -12,13 +12,13 @@ public class PersonChunkListener implements ChunkListener {
 
     @Override
     public void beforeChunk(ChunkContext context) {
-        log.info("chuck transaction starts");
+        log.info(">>>>> chuck transaction starts");
 
     }
 
     @Override
     public void afterChunk(ChunkContext context) {
-        log.info("chuck transaction committed");
+        log.info(">>>>> chuck transaction committed");
     }
 
     @Override
