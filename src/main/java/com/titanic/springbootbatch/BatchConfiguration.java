@@ -77,6 +77,7 @@ public class BatchConfiguration {
             .reader(reader())
             .processor(processor())
             .writer(writer)
+            .listener(new PersonStepExecutionListener())
             .listener(new PersonChunkListener())
             .build();
     }
