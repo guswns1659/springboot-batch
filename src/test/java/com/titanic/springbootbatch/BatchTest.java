@@ -1,5 +1,7 @@
 package com.titanic.springbootbatch;
 
+import java.util.List;
+import java.util.Optional;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
@@ -12,12 +14,11 @@ import org.springframework.batch.core.repository.JobRepository;
 import org.springframework.batch.test.JobLauncherTestUtils;
 import org.springframework.batch.test.context.SpringBatchTest;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit.jupiter.SpringExtension;
 import org.springframework.test.context.junit4.SpringRunner;
 
-@ExtendWith(SpringExtension.class)
-@SpringBatchTest
 @SpringBootTest
 public class BatchTest {
 
@@ -28,6 +29,7 @@ public class BatchTest {
     private JobRepository jobRepository;
 
     @Autowired
+    @Qualifier("importUserJob")
     private Job job;
 
     private JobLauncherTestUtils jobLauncherTestUtils;
