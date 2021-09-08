@@ -68,15 +68,15 @@ public class PartitioningBatchConfiguration {
     public Step slaveStep(JdbcBatchItemWriter<Person> writer) {
         return stepBuilderFactory.get("slaveStep")
             .<Person, Person>chunk(10)
-            .reader(reader())
-            .processor(processor())
+            .reader(readerr())
+            .processor(processorr())
             .writer(writer)
             .build();
     }
 
     @Bean
     @StepScope
-    public FlatFileItemReader<Person> reader() {
+    public FlatFileItemReader<Person> readerr() {
         return new FlatFileItemReaderBuilder<Person>()
             .name("personItemReader")
             .resource(new ClassPathResource("sample-data.csv"))
@@ -90,13 +90,13 @@ public class PartitioningBatchConfiguration {
 
     @Bean
     @StepScope
-    public PersonItemProcessor processor() {
+    public PersonItemProcessor processorr() {
         return new PersonItemProcessor();
     }
 
     @Bean
     @StepScope
-    public JdbcBatchItemWriter<Person> writer(DataSource dataSource) {
+    public JdbcBatchItemWriter<Person> writerr(DataSource dataSource) {
         return new JdbcBatchItemWriterBuilder<Person>()
             .itemSqlParameterSourceProvider(new BeanPropertyItemSqlParameterSourceProvider<>())
             .sql("INSERT INTO people (first_name, last_name) VALUES (:firstName, :lastName)")
