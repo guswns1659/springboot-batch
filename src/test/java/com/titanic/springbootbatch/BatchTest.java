@@ -8,7 +8,9 @@ import org.junit.jupiter.api.extension.ExtendWith;
 import org.junit.runner.RunWith;
 import org.springframework.batch.core.Job;
 import org.springframework.batch.core.JobExecution;
+import org.springframework.batch.core.JobInstance;
 import org.springframework.batch.core.JobParameters;
+import org.springframework.batch.core.JobParametersBuilder;
 import org.springframework.batch.core.launch.JobLauncher;
 import org.springframework.batch.core.repository.JobRepository;
 import org.springframework.batch.test.JobLauncherTestUtils;
@@ -45,11 +47,15 @@ public class BatchTest {
     @Test
     public void testMyJob() throws Exception {
         // given
-        JobParameters jobParameters = jobLauncherTestUtils.getUniqueJobParameters();
+        JobParameters jobParameters = jobLauncherTestUtils
+            .getUniqueJobParametersBuilder()
+            .addString("duration", "20190101~20190131").toJobParameters();
 
         // when
         JobExecution jobExecution = jobLauncherTestUtils.launchJob(jobParameters);
+        JobInstance jobInstance = jobExecution.getJobInstance();
 
         // then
+        System.out.println(jobInstance);
     }
 }
